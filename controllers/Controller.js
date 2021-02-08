@@ -19,6 +19,7 @@ const Controller = {
 	fetchFlogs: () => {
 		FrogsModel.get()
 			.then(ListView.render)
+			.then(ControllerView.unlock)
 			.catch(console.error)
 	},
 }

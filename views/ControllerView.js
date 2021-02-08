@@ -4,8 +4,13 @@ const ControllerView = new View()
 
 ControllerView.setup = function(el) {
 	this.el = el
-	console.log(el)
 	return this
+}
+
+ControllerView.unlock = function() {
+	ControllerView.el.querySelectorAll('button').forEach(el => {
+		el.removeAttribute('disabled')
+	})
 }
 
 export default ControllerView;
