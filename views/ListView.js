@@ -24,9 +24,16 @@ ListView.selectFrog = function(event) {
 	if (!index) return;
 
 	const hasFrog = ListView.selectedFrog.some(v => v === index);
-	if (!hasFrog) ListView.selectedFrog.push(index)
+	if (!hasFrog) {
+		ListView.selectedFrog.push(index)
+		ListView.bindClass(event.target)
+	}
 
 	console.log(ListView.selectedFrog)
+}
+
+ListView.bindClass = function(el) {
+	el.classList = 'selected'
 }
 
 export default ListView;
