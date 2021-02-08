@@ -1,3 +1,5 @@
+import MainController from './controllers/MainController.js'
+
 window.addEventListener('DOMContentLoaded', () => {
-	console.log('Hello, world!')
+	MainController.init()
 })
