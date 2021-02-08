@@ -21,6 +21,10 @@ html {
     padding: 0;
 }
 
+.list li {
+    margin-bottom: 2px;
+}
+
 .list li button {
     width: 100%;
     padding: 5px 8px;

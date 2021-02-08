@@ -9,8 +9,9 @@ ListView.setup = function(el) {
 }
 
 ListView.render = function(data) {
-	console.log(data)
-	console.log('watch my cute flogs')
+	ListView.el.innerHTML = data.map(({ index, name }) => {
+		return `<li><button data-index="${index}">${ name }</button></li>`
+	}).join('')
 }
 
 export default ListView;
