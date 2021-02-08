@@ -8,11 +8,15 @@ const Controller = {
 		controller: document.getElementById('controller'),
 		list: document.getElementById('list'),
 	},
+	data: {
+		selectedFlog: []
+	},
 	init: () => {
 		ControllerView.setup(Controller.selectors.controller)
+			.on('action', console.log)
 
 		ListView.setup(Controller.selectors.list)
-			.on('select:update', console.log)
+			.on('select:update', ControllerView.select)
 
 		Controller.fetchFlogs()
 	},
@@ -22,6 +26,10 @@ const Controller = {
 			.then(ControllerView.unlock)
 			.catch(console.error)
 	},
+	select: data => {
+		this.data.selectedFlog = data
+		console.log(this.data.selectedFlog)
+	}
 }
 
 export default Controller
