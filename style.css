@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+html {
+    font-size: 16px;
+}
+
+#app {
+    width: 27.5%;
+    max-width: 750px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+#app h1 {
+    font-size: 1.6rem;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list li button {
+    width: 100%;
+    padding: 5px 8px;
+    text-align: left;
+}
+
+.controller {
+    margin-bottom: 10px;
+    text-align: center;
+}
