@@ -1,5 +1,5 @@
-import MainController from './controllers/MainController.js'
+import Controller from './controllers/Controller.js'
 
 window.addEventListener('DOMContentLoaded', () => {
-	MainController.init()
+	Controller.init()
 })
