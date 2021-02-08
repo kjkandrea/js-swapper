@@ -23,17 +23,20 @@ ListView.selectFrog = function(event) {
 	const index = event.target.dataset.index;
 	if (!index) return;
 
-	const hasFrog = ListView.selectedFrog.some(v => v === index);
-	if (!hasFrog) {
-		ListView.selectedFrog.push(index)
+	const frogIndex = ListView.selectedFrog.findIndex(v => v === index);
+	if (frogIndex !== -1) {
+		ListView.selectedFrog.splice(frogIndex, 1)
 		ListView.bindClass(event.target)
+	} else {
+		ListView.selectedFrog.push(index)
+		ListView.bindClass(event.target, true)
 	}
 
 	console.log(ListView.selectedFrog)
 }
 
-ListView.bindClass = function(el) {
-	el.classList = 'selected'
+ListView.bindClass = function(el, add) {
+	add ? el.classList = 'selected' : el.classList = ''
 }
 
 export default ListView;
