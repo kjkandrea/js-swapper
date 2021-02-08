@@ -8,7 +8,14 @@ const Controller = {
 	},
 	init: () => {
 		ListView.setup(Controller.selectors.list)
+
+		Controller.fetchFlogs()
 	},
+	fetchFlogs: () => {
+		FrogsModel.get()
+			.then(ListView.render)
+			.catch(console.error)
+	}
 }
 
 export default Controller

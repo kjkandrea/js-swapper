@@ -8,4 +8,9 @@ ListView.setup = function(el) {
 	return this
 }
 
+ListView.render = function(data) {
+	console.log(data)
+	console.log('watch my cute flogs')
+}
+
 export default ListView;
