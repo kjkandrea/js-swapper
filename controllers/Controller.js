@@ -8,6 +8,7 @@ const Controller = {
 	},
 	init: () => {
 		ListView.setup(Controller.selectors.list)
+			.on('select:update', console.log)
 
 		Controller.fetchFlogs()
 	},
@@ -15,7 +16,7 @@ const Controller = {
 		FrogsModel.get()
 			.then(ListView.render)
 			.catch(console.error)
-	}
+	},
 }
 
 export default Controller

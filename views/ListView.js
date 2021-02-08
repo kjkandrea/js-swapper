@@ -32,7 +32,7 @@ ListView.selectFrog = function(event) {
 		ListView.bindClass(event.target, true)
 	}
 
-	console.log(ListView.selectedFrog)
+	ListView.emit('select:update', ListView.selectedFrog)
 }
 
 ListView.bindClass = function(el, add) {
