@@ -2,14 +2,14 @@
 
 export default {
 	data: [
-		{ index: 1, name: 'sad frog'},
-		{ index: 2, name: 'happy frog'},
-		{ index: 3, name: 'sexy frog'},
-		{ index: 4, name: 'development frog'},
-		{ index: 5, name: 'mania frog'},
-		{ index: 6, name: 'cute frog'},
-		{ index: 7, name: 'angry frog'},
-		{ index: 8, name: 'tiny frog'},
+		{ id: 1, name: 'sad frog'},
+		{ id: 2, name: 'happy frog'},
+		{ id: 3, name: 'sexy frog'},
+		{ id: 4, name: 'development frog'},
+		{ id: 5, name: 'mania frog'},
+		{ id: 6, name: 'cute frog'},
+		{ id: 7, name: 'angry frog'},
+		{ id: 8, name: 'tiny frog'},
 	],
 
 	get() {
@@ -22,8 +22,8 @@ export default {
 	forceMove( moveUnitAddress, landingPoint ) {
 		// 이동 유닛들을 모든 유닛들 중 선발한다.
 		const allUnits = [...this.data];
-		const moveUnits = this.data.reduce((moveUnits, { index }, arrayIndex) => {
-			const isSelected = moveUnitAddress.some(v => v === index);
+		const moveUnits = this.data.reduce((moveUnits, { id }, arrayIndex) => {
+			const isSelected = moveUnitAddress.some(v => v === id);
 
 			if (isSelected) {
 				const [unit] = allUnits.splice(arrayIndex - moveUnits.length, 1);
@@ -45,8 +45,8 @@ export default {
 		const allUnits = [...this.data];
 		// Array.reduce 를 사용하면서 accumulator 를 안쓴다는거 자체가 조금 이상하긴한데 reduceRight 를 쓰고싶어서..
 		// forEachRight 같은게 있다면 그걸 쓸텐데
-		const reducer = (unused, { index }, arrayIndex) => {
-			const isSelected = moveUnitAddress.some(v => v === index);
+		const reducer = (unused, { id }, arrayIndex) => {
+			const isSelected = moveUnitAddress.some(v => v === id);
 			if (!isSelected) return;
 
 			const maxLength = this.data.length;
@@ -57,7 +57,7 @@ export default {
 			if (!(moveTo > -1 && moveTo < maxLength)) return;
 
 			const moveUnit = allUnits[moveTo];
-			const moveUnitIsSwapped = moveUnitAddress.some(v => v === moveUnit.index);
+			const moveUnitIsSwapped = moveUnitAddress.some(v => v === moveUnit.id);
 
 			if (!moveUnitIsSwapped) swap(allUnits, moveTo, arrayIndex);
 		};
@@ -69,14 +69,14 @@ export default {
 	},
 	reset() {
 		this.data = [
-			{ index: 1, name: 'sad frog'},
-			{ index: 2, name: 'happy frog'},
-			{ index: 3, name: 'sexy frog'},
-			{ index: 4, name: 'development frog'},
-			{ index: 5, name: 'mania frog'},
-			{ index: 6, name: 'cute frog'},
-			{ index: 7, name: 'angry frog'},
-			{ index: 8, name: 'tiny frog'},
+			{ id: 1, name: 'sad frog'},
+			{ id: 2, name: 'happy frog'},
+			{ id: 3, name: 'sexy frog'},
+			{ id: 4, name: 'development frog'},
+			{ id: 5, name: 'mania frog'},
+			{ id: 6, name: 'cute frog'},
+			{ id: 7, name: 'angry frog'},
+			{ id: 8, name: 'tiny frog'},
 		]
 	}
 }

@@ -12,14 +12,14 @@ ListView.setup = function(el) {
 ListView.render = function(data) {
 	ListView.el.innerHTML = ''
 
-	data.forEach(({ index, name }) => {
-		const isSelected = ListView.selectedFrog.some(v => v === index)
+	data.forEach(({ id, name }) => {
+		const isSelected = ListView.selectedFrog.some(v => v === id)
 
 		const liEl = document.createElement('li')
 		const buttonEl = document.createElement('button')
 		const buttonText = document.createTextNode(name)
 		buttonEl.appendChild(buttonText)
-		buttonEl.dataset.index = index;
+		buttonEl.dataset.id = id;
 		liEl.appendChild(buttonEl)
 		if (isSelected) buttonEl.className = 'selected';
 
@@ -35,18 +35,18 @@ ListView.onClickFrog = function(event) {
 	const CLASS_NAME = 'selected'
 
 	const target = event.target;
-	const index = Number(target.dataset.index);
+	const id = Number(target.dataset.id);
 
-	if (!index) return;
+	if (!id) return;
 
 	const isSelected = target.classList.value === CLASS_NAME
 
 	if (isSelected) {
-		ListView.deselect(target, index)
+		ListView.deselect(target, id)
 		return;
 	}
 
-	ListView.select(target, index)
+	ListView.select(target, id)
 
 	ListView.emit('select:update', ListView.selectedFrog)
 }
