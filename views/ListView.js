@@ -47,8 +47,6 @@ ListView.onClickFrog = function(event) {
 	}
 
 	ListView.select(target, id)
-
-	ListView.emit('select:update', ListView.selectedFrog)
 }
 
 ListView.select = function (target, index) {

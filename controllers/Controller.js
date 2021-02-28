@@ -8,15 +8,11 @@ const Controller = {
 		controller: document.getElementById('controller'),
 		list: document.getElementById('list'),
 	},
-	data: {
-		selectedFrog: []
-	},
 	init: () => {
 		ControllerView.setup(Controller.selectors.controller)
 			.on('action', Controller.catchAction)
 
 		ListView.setup(Controller.selectors.list)
-			.on('select:update', Controller.select)
 
 		Controller.fetchFrogs()
 	},
@@ -26,11 +22,8 @@ const Controller = {
 			.then(ControllerView.unlock)
 			.catch(console.error)
 	},
-	select: data => {
-		Controller.data.selectedFrog = data
-	},
 	catchAction: action => {
-		const selectedFrog = Controller.data.selectedFrog;
+		const selectedFrog = ListView.selectedFrog;
 
 		switch (action) {
 			case 'first':
