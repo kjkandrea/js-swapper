@@ -28,7 +28,7 @@ ListView.selectFrog = function(event) {
 		ListView.selectedFrog.splice(frogIndex, 1)
 		ListView.bindClass(event.target)
 	} else {
-		ListView.selectedFrog.push(index)
+		ListView.selectedFrog.push(Number(index))
 		ListView.bindClass(event.target, true)
 	}
 

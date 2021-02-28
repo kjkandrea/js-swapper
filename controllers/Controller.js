@@ -13,7 +13,7 @@ const Controller = {
 	},
 	init: () => {
 		ControllerView.setup(Controller.selectors.controller)
-			.on('action', console.log)
+			.on('action', Controller.catchAction)
 
 		ListView.setup(Controller.selectors.list)
 			.on('select:update', Controller.select)
@@ -29,6 +29,16 @@ const Controller = {
 	select: data => {
 		Controller.data.selectedFlog = data
 		console.log(Controller.data.selectedFlog)
+	},
+	catchAction: action => {
+		switch (action) {
+			case 'first':
+				FrogsModel.forceMove(Controller.data.selectedFlog, 0)
+				break;
+			case 'last':
+
+				break;
+		}
 	}
 }
 
