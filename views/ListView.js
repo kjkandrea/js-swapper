@@ -10,9 +10,21 @@ ListView.setup = function(el) {
 }
 
 ListView.render = function(data) {
-	ListView.el.innerHTML = data.map(({ index, name }) => {
-		return `<li><button data-index="${index}">${ name }</button></li>`
-	}).join('')
+	ListView.el.innerHTML = ''
+
+	data.forEach(({ index, name }) => {
+		const isSelected = ListView.selectedFrog.some(v => v === index)
+
+		const liEl = document.createElement('li')
+		const buttonEl = document.createElement('button')
+		const buttonText = document.createTextNode(name)
+		buttonEl.appendChild(buttonText)
+		buttonEl.dataset.index = index;
+		liEl.appendChild(buttonEl)
+		if (isSelected) buttonEl.className = 'selected';
+
+		ListView.el.appendChild(liEl)
+	})
 }
 
 ListView.bindEvents = function(el) {

@@ -34,6 +34,7 @@ const Controller = {
 		switch (action) {
 			case 'first':
 				FrogsModel.forceMove(Controller.data.selectedFlog, 0)
+				ListView.render(FrogsModel.data)
 				break;
 			case 'last':
 
