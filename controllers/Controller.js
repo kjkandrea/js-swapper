@@ -16,7 +16,7 @@ const Controller = {
 			.on('action', console.log)
 
 		ListView.setup(Controller.selectors.list)
-			.on('select:update', ControllerView.select)
+			.on('select:update', Controller.select)
 
 		Controller.fetchFlogs()
 	},
@@ -27,8 +27,8 @@ const Controller = {
 			.catch(console.error)
 	},
 	select: data => {
-		this.data.selectedFlog = data
-		console.log(this.data.selectedFlog)
+		Controller.data.selectedFlog = data
+		console.log(Controller.data.selectedFlog)
 	}
 }
 
