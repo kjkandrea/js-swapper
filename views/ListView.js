@@ -28,33 +28,38 @@ ListView.render = function(data) {
 }
 
 ListView.bindEvents = function(el) {
-	el.addEventListener('click', ListView.selectFrog)
+	el.addEventListener('click', ListView.onClickFrog)
 }
 
-ListView.selectFrog = function(event) {
-	const className = 'selected'
+ListView.onClickFrog = function(event) {
+	const CLASS_NAME = 'selected'
 
 	const target = event.target;
 	const index = Number(target.dataset.index);
-	const isSelected = target.classList.value === className
+
+	if (!index) return;
+
+	const isSelected = target.classList.value === CLASS_NAME
 
 	if (isSelected) {
 		ListView.deselect(target, index)
 		return;
 	}
 
-	if (!index) return;
+	ListView.select(target, index)
 
+	ListView.emit('select:update', ListView.selectedFrog)
+}
+
+ListView.select = function (target, index) {
 	const frogIndex = ListView.selectedFrog.findIndex(v => v === index);
 	if (frogIndex !== -1) {
 		ListView.selectedFrog.splice(frogIndex, 1)
-		ListView.bindClass(event.target)
+		ListView.bindClass(target)
 	} else {
 		ListView.selectedFrog.push(index)
-		ListView.bindClass(event.target, true)
+		ListView.bindClass(target, true)
 	}
-
-	ListView.emit('select:update', ListView.selectedFrog)
 }
 
 ListView.deselect = function (target, index) {
