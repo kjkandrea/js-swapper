@@ -9,7 +9,7 @@ const Controller = {
 		list: document.getElementById('list'),
 	},
 	data: {
-		selectedFlog: []
+		selectedFrog: []
 	},
 	init: () => {
 		ControllerView.setup(Controller.selectors.controller)
@@ -18,26 +18,26 @@ const Controller = {
 		ListView.setup(Controller.selectors.list)
 			.on('select:update', Controller.select)
 
-		Controller.fetchFlogs()
+		Controller.fetchFrogs()
 	},
-	fetchFlogs: () => {
+	fetchFrogs: () => {
 		FrogsModel.get()
 			.then(ListView.render)
 			.then(ControllerView.unlock)
 			.catch(console.error)
 	},
 	select: data => {
-		Controller.data.selectedFlog = data
+		Controller.data.selectedFrog = data
 	},
 	catchAction: action => {
-		const selectedFrog = Controller.data.selectedFlog;
+		const selectedFrog = Controller.data.selectedFrog;
 
 		switch (action) {
 			case 'first':
 				FrogsModel.forceMove(selectedFrog, 0)
 				break;
 			case 'last':
-				const lastLandingPoint = FrogsModel.data.length - Controller.data.selectedFlog.length
+				const lastLandingPoint = FrogsModel.data.length - Controller.data.selectedFrog.length
 
 				FrogsModel.forceMove(selectedFrog, lastLandingPoint)
 				break;
