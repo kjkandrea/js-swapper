@@ -34,12 +34,15 @@ const Controller = {
 		switch (action) {
 			case 'first':
 				FrogsModel.forceMove(Controller.data.selectedFlog, 0)
-				ListView.render(FrogsModel.data)
 				break;
 			case 'last':
+				const lastLandingPoint = FrogsModel.data.length - Controller.data.selectedFlog.length
 
+				FrogsModel.forceMove(Controller.data.selectedFlog, lastLandingPoint)
 				break;
 		}
+
+		ListView.render(FrogsModel.data)
 	}
 }
 
