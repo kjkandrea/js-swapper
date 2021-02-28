@@ -32,7 +32,17 @@ ListView.bindEvents = function(el) {
 }
 
 ListView.selectFrog = function(event) {
-	const index = event.target.dataset.index;
+	const className = 'selected'
+
+	const target = event.target;
+	const index = Number(target.dataset.index);
+	const isSelected = target.classList.value === className
+
+	if (isSelected) {
+		ListView.deselect(target, index)
+		return;
+	}
+
 	if (!index) return;
 
 	const frogIndex = ListView.selectedFrog.findIndex(v => v === index);
@@ -40,11 +50,19 @@ ListView.selectFrog = function(event) {
 		ListView.selectedFrog.splice(frogIndex, 1)
 		ListView.bindClass(event.target)
 	} else {
-		ListView.selectedFrog.push(Number(index))
+		ListView.selectedFrog.push(index)
 		ListView.bindClass(event.target, true)
 	}
 
 	ListView.emit('select:update', ListView.selectedFrog)
+}
+
+ListView.deselect = function (target, index) {
+	const selectedIndexArrayIndex = ListView.selectedFrog.findIndex(v => v === index)
+	target.className = ''
+	ListView.selectedFrog.splice(selectedIndexArrayIndex, 1)
+
+	console.log(ListView.selectedFrog)
 }
 
 ListView.bindClass = function(el, add) {
