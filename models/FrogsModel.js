@@ -54,12 +54,12 @@ export default {
 			const moveTo = arrayIndex + landingPoint;
 
 			// 전체 길이를 초과하거나, 전체 길이보다 짦게 이동하는것은 불허
-			if (moveTo > -1 && moveTo < maxLength) {
-				const moveUnit = allUnits[moveTo];
-				const moveUnitIsSwapped = moveUnitAddress.some(v => v === moveUnit.index);
+			if (!(moveTo > -1 && moveTo < maxLength)) return;
 
-				if (!moveUnitIsSwapped) swap(allUnits, moveTo, arrayIndex);
-			}
+			const moveUnit = allUnits[moveTo];
+			const moveUnitIsSwapped = moveUnitAddress.some(v => v === moveUnit.index);
+
+			if (!moveUnitIsSwapped) swap(allUnits, moveTo, arrayIndex);
 		};
 
 		if (landingPoint === -1) this.data.reduce(reducer, []);
