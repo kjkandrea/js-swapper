@@ -31,14 +31,22 @@ const Controller = {
 		console.log(Controller.data.selectedFlog)
 	},
 	catchAction: action => {
+		const selectedFrog = Controller.data.selectedFlog;
+
 		switch (action) {
 			case 'first':
-				FrogsModel.forceMove(Controller.data.selectedFlog, 0)
+				FrogsModel.forceMove(selectedFrog, 0)
 				break;
 			case 'last':
 				const lastLandingPoint = FrogsModel.data.length - Controller.data.selectedFlog.length
 
-				FrogsModel.forceMove(Controller.data.selectedFlog, lastLandingPoint)
+				FrogsModel.forceMove(selectedFrog, lastLandingPoint)
+				break;
+			case 'prev':
+				FrogsModel.swapMove(selectedFrog, -1)
+				break;
+			case 'next':
+				FrogsModel.swapMove(selectedFrog, 1)
 				break;
 		}
 
