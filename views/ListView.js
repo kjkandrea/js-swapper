@@ -66,8 +66,6 @@ ListView.deselect = function (target, index) {
 	const selectedIndexArrayIndex = ListView.selectedFrog.findIndex(v => v === index)
 	target.className = ''
 	ListView.selectedFrog.splice(selectedIndexArrayIndex, 1)
-
-	console.log(ListView.selectedFrog)
 }
 
 ListView.bindClass = function(el, add) {

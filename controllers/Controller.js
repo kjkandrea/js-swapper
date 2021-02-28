@@ -28,7 +28,6 @@ const Controller = {
 	},
 	select: data => {
 		Controller.data.selectedFlog = data
-		console.log(Controller.data.selectedFlog)
 	},
 	catchAction: action => {
 		const selectedFrog = Controller.data.selectedFlog;
