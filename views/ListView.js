@@ -74,4 +74,8 @@ ListView.bindClass = function(el, add) {
 	add ? el.classList = 'selected' : el.classList = ''
 }
 
+ListView.deselectAll = function () {
+	ListView.selectedFrog = []
+}
+
 export default ListView;

@@ -48,6 +48,13 @@ const Controller = {
 			case 'next':
 				FrogsModel.swapMove(selectedFrog, 1)
 				break;
+			case 'reset':
+				FrogsModel.reset()
+				ListView.deselectAll()
+				break;
+			case 'deselect':
+				ListView.deselectAll()
+				break;
 		}
 
 		ListView.render(FrogsModel.data)

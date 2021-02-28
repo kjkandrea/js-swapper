@@ -66,5 +66,17 @@ export default {
 		if (landingPoint === 1) this.data.reduceRight(reducer, []); // next 로 이동할 경우 역순으로 움직여라.
 
 		this.data = allUnits;
+	},
+	reset() {
+		this.data = [
+			{ index: 1, name: 'sad frog'},
+			{ index: 2, name: 'happy frog'},
+			{ index: 3, name: 'sexy frog'},
+			{ index: 4, name: 'development frog'},
+			{ index: 5, name: 'mania frog'},
+			{ index: 6, name: 'cute frog'},
+			{ index: 7, name: 'angry frog'},
+			{ index: 8, name: 'tiny frog'},
+		]
 	}
 }
