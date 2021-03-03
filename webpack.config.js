@@ -25,11 +25,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'url-loader',
         options: {
           publicPath: '../dist/',
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit: 20000, // 20kb
         },
       }
     ]
