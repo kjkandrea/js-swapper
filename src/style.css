@@ -5,6 +5,7 @@ html {
 }
 
 #app {
+    background-image: url('./kermit.png');
     width: 27.5%;
     max-width: 750px;
     min-width: 320px;
