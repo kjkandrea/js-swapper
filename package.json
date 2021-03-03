@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server index.html --baseDir='src'"
+    "dev": "lite-server index.html --baseDir='src'",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
