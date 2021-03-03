@@ -6,7 +6,17 @@ module.exports = {
     main: './src/app.js'
   },
   output: {
+    path: path.resolve('./dist'),
     filename: '[name].js',
-    path: path.resolve('./dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          path.resolve('./webpack-loader.js')
+        ]
+      }
+    ]
   }
 }
