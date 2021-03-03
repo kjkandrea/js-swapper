@@ -25,10 +25,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.png$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          publicPath: '../dist/',
+          name: '[name].[ext]?[hash]'
+        },
       }
     ]
   }
