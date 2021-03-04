@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "lite-server index.html --baseDir='src'",
-    "open": "open public/index.html",
-    "build": "webpack"
+    "open": "open src/index.html",
+    "build": "webpack && open dist/index.html"
   },
   "author": "",
   "license": "ISC",
